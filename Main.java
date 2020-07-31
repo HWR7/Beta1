@@ -19,14 +19,14 @@ public class Main {
         Scanner in1 = new Scanner(System.in);
         int z1 = in1.nextInt();
         int z2 = in1.nextInt();
-        PersonData db = new PersonData(z1, z2);
+        pdb = new PersonData(z1, z2);
         System.out.println("Ihre Datensätze können bis zu "+z1+" Stylisten und "+z2+" Klienten enthalten.");
         System.out.println();
 
         System.out.println("Geben Sie ihre gewünschte Maximalmenge Terminen. (abhängig von ihren Speicherkapazitäten)");
         Scanner in2 = new Scanner(System.in);
         int z3 = in2.nextInt();
-        AppointmentData adb = new AppointmentData(z3);
+        adb = new AppointmentData(z3);
         System.out.println("Ihre Datensätze können bis zu "+z3+" Einträge enthalten.");
         System.out.println();
 

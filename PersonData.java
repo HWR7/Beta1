@@ -35,7 +35,7 @@ public class PersonData {
 
     public void display1S(){
         System.out.println("Stylisten-Account "+(countS+1)+": ");
-        stylistList[countC].display();
+        stylistList[countS].display();
         System.out.println();
         System.out.println();
     }

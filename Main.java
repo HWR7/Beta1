@@ -227,7 +227,7 @@ public class Main {
                 return menu;
             case 15:
                 pdb.displayClients();
-                System.out.println("Klienten-Konto löschen. Geben Sie die passende Stylistennummer an: ");
+                System.out.println("Klienten-Konto löschen. Geben Sie die passende Kundennummer an: ");
 
                 int index3 = in.nextInt() -1;
                 pdb.deleteClient(index3);

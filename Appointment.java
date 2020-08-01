@@ -43,8 +43,8 @@ public class Appointment implements Serializable {
         Date d2 = new Date(this.day, this.month, this.year, this.hour, this.min);
         this.date = d2;
 
-        this.stylistID = stylistID-1;
-        this.clientID = clientID-1;
+        this.stylistID = stylistID -1;
+        this.clientID = clientID -1;
         PersonData pdb = new PersonData(10, 100);
 
         pdb.loadingAccounts("Konten.dat");

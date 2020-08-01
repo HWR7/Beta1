@@ -75,12 +75,6 @@ public class Main {
         System.out.println("[19] Alle Personen anzeigen ");
 
         System.out.println("[20] Alle Termine sortieren ");
-        System.out.println("[21] empty ");
-
-        System.out.println("[22] empty");
-        System.out.println("[22] empty");
-        System.out.println("[22] empty");
-        System.out.println("[22] empty");
 
         System.out.println("[99] Programm beenden");
 
@@ -261,6 +255,7 @@ public class Main {
             case 16:
                 System.out.println();
                 System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze aus der Liste entfernen: ");
+                String dat1 = in.next();
                 adb.organizeAndDeleteExpiredData();
 
                 menu = 16;
@@ -288,9 +283,8 @@ public class Main {
                 return menu;
             case 20:
                 System.out.println();
-                System.out.println("[20] Alle Termine aus der gewählten Datenliste sortieren (Standard: Termine.dat): ");
-                String dat = in.next();
-                adb.bubbleSort(dat);
+                System.out.println("[20] Alle Termine nach Datum und Zeit sortieren: ");
+                adb.bubbleSort();
 
                 menu = 20;
                 return menu;

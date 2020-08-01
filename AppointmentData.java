@@ -13,38 +13,58 @@ public class AppointmentData {
         appointmentList = new Appointment[max];
     }
 
-    //insert Appointment
+    //insert Appointment mit Sort
     public boolean insertAppointment(int day, int month, int year, int h,int min, int stylistID, int clientID,String... s){
         if(count >= max) return false;
         appointmentList[count] = new Appointment(day, month, year, h, min,stylistID, clientID, s);
         count++;
+        bubbleSort();
         return true;
     }
 
+    //insert Appointment heute mit Sort
     public boolean insertToday(int h,int min, int stylistID, int clientID, String... s){
         if(count >= max) return false;
         appointmentList[count] = new Appointment(h, min, stylistID, clientID, s);
         count++;
+        bubbleSort();
         return true;
     }
 
-    //insert Appointment with overlap check
-    public boolean insertCheck(String dat, int day, int month, int year, int h,int min, int stylistID, int clientID, String... s){
-        if(count >= max) return false;
-        bubbleSort(dat);
-        appointmentList[count] = new Appointment(day, month, year, h, min, stylistID, clientID, s);
+    //insert Appointment with overlap check and sort
+    public boolean insertCheckAppointment(int day, int month, int year, int h,int min, int stylistID, int clientID, String... s){
 
-        //insert code here
-        boolean checkOverlap = checkOverlap(appointmentList[count], appointmentList[linearSearchYMD(appointmentList[count])]);
-        if(checkOverlap == true){
-            System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
-            System.out.println("Wählen Sie bitte einen neuen Termin.");
-            delete(count);
+        //System.out.println(count);
+        if(count >= max) return false;
+
+        if(count == 0) {
+            insertAppointment(day, month, year, h, min, stylistID, clientID, s);
             return true;
         }
 
+        Appointment a = new Appointment(day, month, year, h, min, stylistID, clientID, s);
+
+        if(linearSearchYMD(a) == true){
+
+            //System.out.println(count);
+            //appointmentList[count-1].display();
+            //appointmentList[linearSearchYMDIndex(a)].display();
+
+            boolean checkOverlap = checkOverlap(appointmentList[count-1], appointmentList[linearSearchYMDIndex(a)]);
+
+            if(checkOverlap == true) {
+                System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
+                System.out.println("Wählen Sie bitte einen neuen Termin.");
+                //delete(count);
+                return false;
+            }
+        }
+        appointmentList[count] = new Appointment(day, month, year, h, min, stylistID, clientID, s);
+        bubbleSort();
         count++;
         return true;
+
+
     }
 
     //Ueberschneidungen zwischen 2 Temrinen werden als true ausgegeben
@@ -56,29 +76,49 @@ public class AppointmentData {
         int nr3 = a2.getTime() + a2.getMin() + (a2.getHour() * 60);
         int nr4 = a2.getMin() + (a2.getHour() * 60);
 
-
-        if(a1.getDate() == a2.getDate()){
+        if(a1.getYear() == a2.getYear()
+                && a1.getMonth() == a2.getMonth()
+                && a1.getDay() == a2.getDay()
+        ){
             if(a1.getHour()==a2.getHour() && a1.getMin() == a2.getMin()){
                 checkOverlap = true;
+                //System.out.println("1");
             }
             else if( nr4<nr2 && nr2<nr3){
                 checkOverlap = true;
+                //System.out.println("2");
             }
             else if( nr4<nr1 && nr1<nr3){
                 checkOverlap = true;
+                //System.out.println("3");
             }
         }
 
         return checkOverlap;
     }
 
-    public int linearSearchYMD(Appointment a){
-        int index = -1;
-        for(int i = 0; i < appointmentList.length; i++){
+    public boolean linearSearchYMD(Appointment a) {
+        //boolean found = false;
+        for (int i = 0; i < count; i++) {
+            if (appointmentList[i].getYear() == a.getYear()
+                    && appointmentList[i].getMonth() == a.getMonth()
+                    && appointmentList[i].getDay() == a.getDay()) {
+                //found = true;
+                //System.out.println("found");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int linearSearchYMDIndex(Appointment a){
+        int index = 0;
+        for(int i = 0; i < count; i++){
             if(appointmentList[i].getYear() == a.getYear()
                     && appointmentList[i].getMonth() == a.getMonth()
                     && appointmentList[i].getDay() == a.getDay()){
                 index = i;
+                //System.out.println("found");
                 return index;
             }
         }
@@ -156,67 +196,32 @@ public class AppointmentData {
         }
     }
 
-    //Sortiert die Datensätze und löscht bereits ausgelaufene
-    public void organizeAndDeleteExpiredData(){
+    //Sortiert die Datensätze und löscht bereits ausgelaufene durch Eingabe der TerminDatei
+    public void organizeAndDeleteExpiredData() {
 
-        AppointmentData adb = new AppointmentData(100);
-        //adb.loadingAppointments("Termine.dat");
-        adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
-        adb.insertToday(13,15, 1, 1,"wash");
-
-
-        for(int i = 0; i <= appointmentList.length; i++){
-            for(int j = 0; j <= appointmentList.length; j++){
-                //Appointment a1 = appointmentList[j];
-                //Appointment a2 = appointmentList[j+1];
-
-                if(appointmentList[j].getYear() <= appointmentList[j+1].getYear()
-                        && appointmentList[j].getMonth() <= appointmentList[j+1].getYear()
-                        && appointmentList[j].getDay() <= appointmentList[j+1].getDay()
-                        && appointmentList[j].getHour() <= appointmentList[j+1].getHour()
-                        && appointmentList[j].getMin() < appointmentList[j+1].getMin()
-                ){
-                    if(checkExpired(appointmentList[j]) == true){
-                        System.out.println("Datensatz "+j+" wurde gelöscht: ");
-                        appointmentList[j].display();
-                        delete(j);
-                    }else {
-                        Appointment a = appointmentList[j];
-                        appointmentList[j] = appointmentList[j + 1];
-                        appointmentList[j + 1] = a;
-                    }
-                }
-                /*
-                if(a1.getYear() <= a2.getYear()
-                        && a1.getMonth() <= a2.getYear()
-                        && a1.getDay() <= a2.getDay()
-                        && a1.getHour() <= a2.getHour()
-                        && a1.getMin() < a2.getMin()
-                ){
-                    if(checkExpired(appointmentList[j]) == true){
-                        System.out.println("Datensatz "+j+" wurde gelöscht: ");
-                        appointmentList[j].display();
-                        delete(j);
-                    }else {
-                        Appointment a = appointmentList[j];
-                        appointmentList[j] = appointmentList[j + 1];
-                        appointmentList[j + 1] = a;
-                    }
-                }
-
-                 */
+        bubbleSort();
+        for (int i = 0; i < count; i++) {
+            if (checkExpired(appointmentList[i]) == true) {
+                System.out.println("Datensatz " + i +1 + " wurde gelöscht: ");
+                appointmentList[i].display();
+                delete(i);
             }
+
+            System.out.println("Vorgang beendet und die Terminliste ist nun aktualisiert.");
+            System.out.println();
+
         }
     }
 
-    //einfacher Suchalgorithmus, da einfachere Implementierung und keine großen Datenmengen zu erwarten
-    public void bubbleSort(String dat){
+    //einfacher Suchalgorithmus, da einfachere Implementierung und keine großen Datenmengen zu erwarten (vllt. durch bspw. QuickSort auswechselbar)
+    public void bubbleSort(){
 
-        AppointmentData adb = new AppointmentData(100);
-        adb.loadingAppointments(dat);
+        //System.out.println(appointmentList.length);
+        //System.out.println(count);
 
-        for(int i = 0; i <= appointmentList.length; i++){
-            for(int j = 0; j <= appointmentList.length; j++){
+
+        for(int i = 0; i < (count-1); i++){
+            for(int j = 0; j < (count-1); j++){
 
                 //Appointment a1 = appointmentList[j];
                 //int k = j+1;
@@ -266,6 +271,7 @@ public class AppointmentData {
                 }
 
  */
+                //appointmentList[j].display();
 
                 int year1 = appointmentList[j].getYear();
                 int year2 = appointmentList[j+1].getYear();

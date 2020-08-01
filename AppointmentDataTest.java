@@ -14,30 +14,49 @@ public class AppointmentDataTest {
         pdb.saveAccounts("Konten.dat");
 
         AppointmentData adb = new AppointmentData(100);
-        //Appointment a1 = new Appointment(1, 2, "wash");
-        //adb.insertAppointment(1,2,3,15, 30, 1, 1, "wash");
-        //adb.insertAppointment(2,3,4,15, 30, 1, 1,"wash");
-        adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
-        adb.insertToday(13,15, 1, 1,"wash");
-/*
-        adb.insertCheck(1,2,3,15, 30, "wash");
-        adb.insertCheck(2,3,4,15, 30, "wash");
-        adb.insertCheck(1,2,3,15, 30, "wash");
-        adb.insertCheck(3,4,5,15, 30, "wash");
- */
+
+        //funktioniert
+        //adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
+        //adb.insertToday(13,15, 1, 1,"wash");
+
+        //Test
+        adb.insertCheckAppointment(1,2,3,15, 30, 1, 1,"wash");
+        System.out.println("1");
+        adb.insertCheckAppointment(2,3,4,15, 30,1, 1, "wash");
+        System.out.println("1");
+        adb.insertCheckAppointment(1,2,3,15, 30, 1, 1,"wash");
+        System.out.println("1");
+        adb.insertCheckAppointment(3,4,5,15, 30, 1, 1,"wash");
+        System.out.println("1");
 
         System.out.println("Terminplaner: ");
         adb.display();
 
+
+/*      //funktioniert
         System.out.println("delete: ");
         adb.delete(1);
         adb.display();
-
+*/
         adb.saveAppointments("Termine.dat");
-        System.out.println("save: ");
+        System.out.println("Test: ");
+
+        //Test erfolgreich
+        //Appointment a = new Appointment(1,2,3,15,30,1,1,"wash");
+        //Appointment b = new Appointment(1,2,3,15,30,1,1,"wash");
+        //System.out.println(adb.checkOverlap(a, b));
+
+        //Test checkExpired erfolgreich
+        //Appointment a = new Appointment(1,2,3,15,30,1,1,"wash");
+        //System.out.println(adb.checkExpired(a));
+
+        //Test erfolgreich
         //adb.organizeAndDeleteExpiredData();
-        adb.bubbleSort("Termine.dat");
-        adb.display();
+
+        //funktioniert
+        //adb.bubbleSort();
+
+        //adb.display();
 
         /*
         System.out.println("Inhalt des Terminplaners; ");

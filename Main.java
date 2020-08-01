@@ -23,7 +23,7 @@ public class Main {
         System.out.println("Ihre Datensätze können bis zu "+z1+" Stylisten und "+z2+" Klienten enthalten.");
         System.out.println();
 
-        System.out.println("Geben Sie ihre gewünschte Maximalmenge Terminen. (abhängig von ihren Speicherkapazitäten)");
+        System.out.println("Geben Sie ihre gewünschte Maximalmenge Terminen. (abhängig von ihren Speicherkapazitäten)"); //Tippfehler
         Scanner in2 = new Scanner(System.in);
         int z3 = in2.nextInt();
         adb = new AppointmentData(z3);

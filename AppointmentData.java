@@ -50,7 +50,7 @@ public class AppointmentData {
             //appointmentList[count-1].display();
             //appointmentList[linearSearchYMDIndex(a)].display();
 
-            boolean checkOverlap = checkOverlap(appointmentList[count-1], appointmentList[linearSearchYMDIndex(a)]);
+            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDIndex(a)]);
 
             if(checkOverlap == true) {
                 System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
@@ -60,6 +60,41 @@ public class AppointmentData {
             }
         }
         appointmentList[count] = new Appointment(day, month, year, h, min, stylistID, clientID, s);
+        bubbleSort();
+        count++;
+        return true;
+
+
+    }
+
+    public boolean insertCheckToday(int h,int min, int stylistID, int clientID, String... s){
+
+        //System.out.println(count);
+        if(count >= max) return false;
+
+        if(count == 0) {
+            insertToday( h, min,  stylistID,  clientID, s);
+            return true;
+        }
+
+        Appointment a = new Appointment(h, min, stylistID, clientID, s);
+
+        if(linearSearchYMD(a) == true){
+
+            //System.out.println(count);
+            //appointmentList[count-1].display();
+            //appointmentList[linearSearchYMDIndex(a)].display();
+
+            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDIndex(a)]);
+
+            if(checkOverlap == true) {
+                System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
+                System.out.println("Wählen Sie bitte einen neuen Termin.");
+                //delete(count);
+                return false;
+            }
+        }
+        appointmentList[count] = new Appointment(h, min, stylistID, clientID, s);
         bubbleSort();
         count++;
         return true;

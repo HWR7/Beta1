@@ -19,15 +19,18 @@ public class AppointmentDataTest {
         //adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
         //adb.insertToday(13,15, 1, 1,"wash");
 
-        //Test
+        //Test erfolgreich
+        /*
         adb.insertCheckAppointment(1,2,3,15, 30, 1, 1,"wash");
-        System.out.println("1");
+        System.out.println("+1");
         adb.insertCheckAppointment(2,3,4,15, 30,1, 1, "wash");
-        System.out.println("1");
+        System.out.println("+1");
         adb.insertCheckAppointment(1,2,3,15, 30, 1, 1,"wash");
-        System.out.println("1");
+        System.out.println("+1");
         adb.insertCheckAppointment(3,4,5,15, 30, 1, 1,"wash");
-        System.out.println("1");
+        System.out.println("+1");
+
+         */
 
         System.out.println("Terminplaner: ");
         adb.display();

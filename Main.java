@@ -62,6 +62,7 @@ public class Main {
         System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen");
 
         System.out.println("[10] Termin eintragen und anzeigen ");
+        System.out.println("[21] Termin für heute eintragen und anzeigen lassen");
         System.out.println("[11] Stylisten eintragen und anzeigen ");
         System.out.println("[12] Klienten eintragen und anzeigen");
 
@@ -186,7 +187,7 @@ public class Main {
                 }
                  */
 
-                adb.insertAppointment(a,b,c,d, e, f, g, s);
+                adb.insertCheckAppointment(a,b,c,d, e, f, g, s);
 
                 System.out.println("Ein Termin wurde hinzugfügt.");
                 adb.displayOne(adb.getCount());
@@ -290,7 +291,28 @@ public class Main {
                 return menu;
             case 21:
                 System.out.println();
-                System.out.println("[21] empty ");
+                System.out.println("[21] Termin für heute eintragen und anzeigen lassen: ");
+                System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
+                pdb.displayStylists();
+                int f1 = in.nextInt();
+
+                System.out.println("Geben Sie ihren gewünschten Termin an. (hour, min, Kundennummer, service(s))");
+                int d1 = in.nextInt();
+                int e1 = in.nextInt();
+
+                int g1 = in.nextInt();
+                String h1 = in.nextLine();
+
+                String[] s1 = stringsInArray(in.nextLine());
+
+                s = h1.split(",",0);
+                for(String kp : s1) System.out.println(s1);System.out.println(s1);
+
+                adb.insertCheckToday(d1, e1, f1, g1, s1);
+
+                System.out.println("Ein Termin wurde hinzugfügt.");
+                adb.displayOne(adb.getCount());
+                System.out.println();
 
                 menu = 21;
                 return menu;

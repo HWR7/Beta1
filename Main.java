@@ -28,7 +28,7 @@ public class Main {
         Scanner in2 = new Scanner(System.in);
         int z3 = in2.nextInt();
         adb = new AppointmentData(z3);
-        adb.saveAppointments("Termin.dat");
+        adb.saveAppointments("Termine.dat");
         System.out.println("Ihre Datensätze können bis zu "+z3+" Einträge enthalten.");
         System.out.println();
 
@@ -48,7 +48,7 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println("Terminplaner (gewünschte Option per Zahl auswaehlen)");
-        System.out.println();
+        //System.out.println();
         System.out.println("[1]  Terminliste speichern");
         System.out.println("[2]  Terminliste anzeigen");
 
@@ -69,13 +69,17 @@ public class Main {
         System.out.println("[14] Stylisten-Konto löschen");
         System.out.println("[15] Clienten-Konto löschen");
 
-        System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze aus der Liste entfernen");
-        System.out.println("[17] Stylisten anzeigen ");               //not rdy
-        System.out.println("[18] Klineten anzeigen ");                //not rdy
-        System.out.println("[19] Alle Personen anzeigen ");           //not rdy
+        System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze/Termine aus der Liste entfernen");
+        System.out.println("[17] Stylisten anzeigen ");
+        System.out.println("[18] Klineten anzeigen ");
+        System.out.println("[19] Alle Personen anzeigen ");
 
-        System.out.println("[20] empty");
-        System.out.println("[21] empty");
+        System.out.println("[20] Alle Termine sortieren ");
+        System.out.println("[21] empty ");
+
+        System.out.println("[22] empty");
+        System.out.println("[22] empty");
+        System.out.println("[22] empty");
         System.out.println("[22] empty");
 
         System.out.println("[99] Programm beenden");
@@ -84,64 +88,74 @@ public class Main {
 
         switch(in.nextInt()) {
             case 1:
-                System.out.println("Terminliste speichern:");
+                System.out.println();
+                System.out.println("[1] Terminliste speichern:");
                 adb.saveAppointments("Termine.dat");
                 menu = 1;
                 //Menu();
                 return menu;
                 //break;
             case 2:
-                System.out.println("Terminliste auslesen lassen: ");
+                System.out.println();
+                System.out.println("[2] Terminliste auslesen lassen: ");
                 adb.display();
                 menu = 2;
                 //Menu();
                 return menu;
                 //break;
             case 3:
-                System.out.println("Stylisten- und Klientenliste speichern: ");
+                System.out.println();
+                System.out.println("[3] Stylisten- und Klientenliste speichern: ");
                 pdb.saveAccounts("Konten.dat");
                 menu = 3;
                 //Menu();
                 return menu;
                 //break;
             case 4:
-                System.out.println("Nur die Klientenliste speichern: ");
+                System.out.println();
+                System.out.println("[4] Nur die Klientenliste speichern: ");
                 pdb.saveCAccounts("Konten.dat");
                 menu = 4;
                 //Menu();
                 return menu;
                 //break;
             case 5:
-                System.out.println("Nur die Stylistenliste speichern: ");
+                System.out.println();
+                System.out.println("[5] Nur die Stylistenliste speichern: ");
                 pdb.saveSAccounts("Konten.dat");
                 menu = 5;
                 return menu;
             case 6:
-                System.out.println("Termine aus dem Speicher laden: ");
+                System.out.println();
+                System.out.println("[6] Termine aus dem Speicher laden: ");
                 pdb.loadingAccounts("Konten.dat");
                 pdb.display();
                 menu = 6;
                 return menu;
             case 7:
-                System.out.println("Alle Konten (Stylist + Kunden) aus dem Speicher laden: ");
+                System.out.println();
+                System.out.println("[7] Alle Konten (Stylist + Kunden) aus dem Speicher laden: ");
                 pdb.loadingAccounts("Konten.dat");
                 pdb.display();
                 menu = 7;
                 return menu;
             case 8:
-                System.out.println("Nur die Klientenliste aus dem Speicher laden: ");
+                System.out.println();
+                System.out.println("[8] Nur die Klientenliste aus dem Speicher laden: ");
                 pdb.loadingCAccounts("Konten.dat");
                 pdb.display();
                 menu = 8;
                 return menu;
             case 9:
-                System.out.println("Nur die Stylistenliste aus dem Speicher laden: ");
+                System.out.println();
+                System.out.println("[9] Nur die Stylistenliste aus dem Speicher laden: ");
                 pdb.loadingSAccounts("Konten.dat");
                 pdb.display();
                 menu = 9;
                 return menu;
             case 10:
-                System.out.println("Termin eintragen und anzeigen ");
+                System.out.println();
+                System.out.println("[10] Termin eintragen und anzeigen ");
                 System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
                 pdb.displayStylists();
                 int f = in.nextInt();
@@ -189,7 +203,8 @@ public class Main {
                 return menu;
                 //break;
             case 11:
-                System.out.println("Stylistenen eintragen und anzeigen: ");
+                System.out.println();
+                System.out.println("[11] Stylistenen eintragen und anzeigen: ");
 
                 pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
@@ -198,7 +213,8 @@ public class Main {
                 menu = 11;
                 return menu;
             case 12:
-                System.out.println("Klienten in die Liste eintragen und anzeigen lassen: ");
+
+                System.out.println("[12] Klienten in die Liste eintragen und anzeigen lassen: ");
 
                 pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
@@ -207,8 +223,9 @@ public class Main {
                 menu = 12;
                 return menu;
             case 13:
+                System.out.println();
                 adb.display();
-                System.out.println("Termin löschen. Geben Sie die passende Terminnummer ein: ");
+                System.out.println("[13] Termin löschen. Geben Sie die passende Terminnummer ein: ");
 
                 int index1 = in.nextInt() - 1;
                 adb.delete(index1);
@@ -218,8 +235,9 @@ public class Main {
                 menu = 13;
                 return menu;
             case 14:
+                System.out.println();
                 pdb.displayStylists();
-                System.out.println("Stylisten-Konto löschen. Geben Sie die passende Stylistennummer an: ");
+                System.out.println("[14] Stylisten-Konto löschen. Geben Sie die passende Stylistennummer an: ");
 
                 int index2 = in.nextInt() -1;
                 pdb.deleteStylist(index2);
@@ -229,8 +247,9 @@ public class Main {
                 menu = 14;
                 return menu;
             case 15:
+                System.out.println();
                 pdb.displayClients();
-                System.out.println("Klienten-Konto löschen. Geben Sie die passende Kundennummer an: ");
+                System.out.println("[15] Klienten-Konto löschen. Geben Sie die passende Kundennummer an: ");
 
                 int index3 = in.nextInt() -1;
                 pdb.deleteClient(index3);
@@ -240,30 +259,65 @@ public class Main {
                 menu = 15;
                 return menu;
             case 16:
+                System.out.println();
+                System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze aus der Liste entfernen: ");
                 adb.organizeAndDeleteExpiredData();
+
                 menu = 16;
                 return menu;
             case 17:
-                System.out.println("Stylisten anzeigen: ");
+                System.out.println();
+                System.out.println("[17] Stylisten anzeigen: ");
                 pdb.displayStylists();
+
                 menu = 17;
                 return menu;
             case 18:
+                System.out.println();
                 System.out.println("[18] Klineten anzeigen: ");
                 pdb.displayClients();
+
                 menu = 18;
                 return menu;
             case 19:
+                System.out.println();
                 System.out.println("[19] Alle Personen anzeigen: ");
                 pdb.displayClients();
+
                 menu = 19;
                 return menu;
             case 20:
+                System.out.println();
+                System.out.println("[20] Alle Termine aus der gewählten Datenliste sortieren (Standard: Termine.dat): ");
+                String dat = in.next();
+                adb.bubbleSort(dat);
 
                 menu = 20;
                 return menu;
+            case 21:
+                System.out.println();
+                System.out.println("[21] empty ");
+
+                menu = 21;
+                return menu;
+            case 22:
+                System.out.println();
+                System.out.println("[] empty ");
+                menu = 22;
+                return menu;
+            case 23:
+                System.out.println();
+                System.out.println("[] empty ");
+                menu = 23;
+                return menu;
+            case 24:
+                System.out.println();
+                System.out.println("[] empty ");
+                menu = 24;
+                return menu;
             case 99:
-                System.out.println("Planer wird geschlossen.");
+                System.out.println();
+                System.out.println("[99] Planer wird geschlossen.");
                 System.exit(0);
                 menu = 99;
                 //break;

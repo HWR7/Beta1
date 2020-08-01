@@ -158,10 +158,35 @@ public class AppointmentData {
 
     //Sortiert die Datensätze und löscht bereits ausgelaufene
     public void organizeAndDeleteExpiredData(){
+
+        AppointmentData adb = new AppointmentData(100);
+        //adb.loadingAppointments("Termine.dat");
+        adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
+        adb.insertToday(13,15, 1, 1,"wash");
+
+
         for(int i = 0; i <= appointmentList.length; i++){
             for(int j = 0; j <= appointmentList.length; j++){
-                Appointment a1 = appointmentList[j];
-                Appointment a2 = appointmentList[j+1];
+                //Appointment a1 = appointmentList[j];
+                //Appointment a2 = appointmentList[j+1];
+
+                if(appointmentList[j].getYear() <= appointmentList[j+1].getYear()
+                        && appointmentList[j].getMonth() <= appointmentList[j+1].getYear()
+                        && appointmentList[j].getDay() <= appointmentList[j+1].getDay()
+                        && appointmentList[j].getHour() <= appointmentList[j+1].getHour()
+                        && appointmentList[j].getMin() < appointmentList[j+1].getMin()
+                ){
+                    if(checkExpired(appointmentList[j]) == true){
+                        System.out.println("Datensatz "+j+" wurde gelöscht: ");
+                        appointmentList[j].display();
+                        delete(j);
+                    }else {
+                        Appointment a = appointmentList[j];
+                        appointmentList[j] = appointmentList[j + 1];
+                        appointmentList[j + 1] = a;
+                    }
+                }
+                /*
                 if(a1.getYear() <= a2.getYear()
                         && a1.getMonth() <= a2.getYear()
                         && a1.getDay() <= a2.getDay()
@@ -178,12 +203,17 @@ public class AppointmentData {
                         appointmentList[j + 1] = a;
                     }
                 }
+
+                 */
             }
         }
     }
 
     //einfacher Suchalgorithmus, da einfachere Implementierung und keine großen Datenmengen zu erwarten
     public void bubbleSort(String dat){
+
+        AppointmentData adb = new AppointmentData(100);
+        adb.loadingAppointments(dat);
 
         for(int i = 0; i <= appointmentList.length; i++){
             for(int j = 0; j <= appointmentList.length; j++){
@@ -236,9 +266,6 @@ public class AppointmentData {
                 }
 
  */
-
-                AppointmentData adb = new AppointmentData(100);
-                adb.loadingAppointments("Termine.dat");
 
                 int year1 = appointmentList[j].getYear();
                 int year2 = appointmentList[j+1].getYear();

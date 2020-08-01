@@ -10,9 +10,9 @@ public class AppointmentDataTest {
         AppointmentData adb = new AppointmentData(100);
         //Appointment a1 = new Appointment(1, 2, "wash");
 
-        //adb.insertAppointment(1,2,3,15, 30, 1, 1, "wash");
+        adb.insertAppointment(1,2,3,15, 30, 1, 1, "wash");
         //adb.insertAppointment(2,3,4,15, 30, 1, 1,"wash");
-        //adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
+        adb.insertAppointment(1,2,3,15, 30, 1, 1,"wash");
         adb.insertToday(13,15, 1, 1,"wash");
 /*
         adb.insertCheck(1,2,3,15, 30, "wash");
@@ -28,10 +28,11 @@ public class AppointmentDataTest {
         adb.delete(1);
         adb.display();
 
+        adb.saveAppointments("Termine.dat");
         System.out.println("save: ");
-        //adb.saveAppointments("Termine.dat");
+        adb.organizeAndDeleteExpiredData();
         //adb.bubbleSort("Termine.dat");
-        //adb.display();
+        adb.display();
 
         /*
         System.out.println("Inhalt des Terminplaners; ");

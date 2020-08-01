@@ -241,6 +241,26 @@ public class Appointment implements Serializable {
         return price;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getStylistID() {
+        return stylistID;
+    }
+
+    public int getClientID() {
+        return clientID;
+    }
+
+    public Stylist getStylist() {
+        return stylist;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
     public String[] getServices() {
         return services;
     }

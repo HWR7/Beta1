@@ -35,28 +35,28 @@ public class PersonData {
 
     public void display1S(int stylistID){
         System.out.println("Stylisten-Account "+(stylistID+1)+": ");
-        stylistList[stylistID].display();
+        stylistList[stylistID].shortDisplay();
         System.out.println();
         System.out.println();
     }
 
     public void displayLastS(){
         System.out.println("Stylisten-Account "+(countS+1)+": ");
-        stylistList[countS].display();
+        stylistList[countS].shortDisplay();
         System.out.println();
         System.out.println();
     }
 
     public void display1C(int clientID){
         System.out.println("Kunden-Account "+(clientID+1)+":");
-        clientList[clientID].display();
+        clientList[clientID].shortDisplay();
         System.out.println();
         System.out.println();
     }
 
     public void displayLastC(){
         System.out.println("Kunden-Account "+(countC+1)+":");
-        clientList[countC].display();
+        clientList[countC].shortDisplay();
         System.out.println();
         System.out.println();
     }
@@ -65,7 +65,7 @@ public class PersonData {
     public void displayStylists() {
         for(int i = 0; i < countS; i++){
             System.out.println("Stylisten-Account "+(i+1)+": ");
-            stylistList[i].display();
+            stylistList[i].shortDisplay();
             System.out.println();
             System.out.println();
         }
@@ -74,7 +74,7 @@ public class PersonData {
     public void displayClients() {
         for(int j = 0; j < countC; j++){
             System.out.println("Client-Account "+(j+1)+":");
-            clientList[j].display();
+            clientList[j].shortDisplay();
             System.out.println();
         }
     }
@@ -82,13 +82,13 @@ public class PersonData {
     public void display() {
         for(int i = 0; i < countS; i++){
             System.out.println("Stylisten-Account "+(i+1)+": ");
-            stylistList[i].display();
+            stylistList[i].shortDisplay();
             System.out.println();
             System.out.println();
         }
         for(int j = 0; j < countC; j++){
             System.out.println("Client-Account "+(j+1)+":");
-            clientList[j].display();
+            clientList[j].shortDisplay();
             System.out.println();
         }
     }

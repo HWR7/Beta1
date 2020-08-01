@@ -152,7 +152,7 @@ public class Stylist extends Person implements Serializable {
         //System.out.println("MitarbeiterID: "+id);
         System.out.println("Name: "+getLname()+", "+getFname());
         System.out.println("Phone: "+phone+"; E-Mail: "+getEmail());
-        //displaySpecial();
+        displaySpecial();
     }
 
     public void display(){
@@ -165,7 +165,7 @@ public class Stylist extends Person implements Serializable {
     }
 
     public void displaySpecial(){
-        System.out.print("Specialization: ");
+        System.out.print("Specialisation: ");
         for(int i = 0; i < special.length; i++){
             System.out.print(special[i]);
             if(i < (special.length-1)) System.out.print(", ");

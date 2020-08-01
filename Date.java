@@ -56,7 +56,7 @@ public class Date extends Time implements Serializable {
             System.out.println("invalid day-value, lower then 0");
             failD = true;
         }
-        else if (month == 2 && d != 28) {
+        else if (month == 2 && d > 28 && d  < 1) {
             System.out.println("invalid day-value, for Feb");
             failD = true;
         }

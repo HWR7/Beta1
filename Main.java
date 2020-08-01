@@ -190,7 +190,7 @@ public class Main {
 
                 pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
-                pdb.display1S();
+                pdb.displayLastS();
 
                 menu = 11;
                 return menu;
@@ -199,7 +199,7 @@ public class Main {
 
                 pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
-                pdb.display1C();
+                pdb.displayLastC();
 
                 menu = 12;
                 return menu;

@@ -23,6 +23,11 @@ public class Appointment implements Serializable {
     private int time;
     private double price;
 
+    private int stylistID;
+    private int clientID;
+    private Stylist stylist;
+    private Client client;
+
     private String[] services;
 
     //sofortiger Termin
@@ -38,9 +43,16 @@ public class Appointment implements Serializable {
         Date d2 = new Date(this.day, this.month, this.year, this.hour, this.min);
         this.date = d2;
 
+        this.stylistID = stylistID-1;
+        this.clientID = clientID-1;
         PersonData pdb = new PersonData(10, 100);
-        pdb.getClient(clientID);
-        pdb.getStylist(stylistID);
+
+        //pdb.loadingAccounts("Konto.dat");
+        pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
+        pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
+
+        this.client = pdb.getClient(clientID);
+        this.stylist = pdb.getStylist(stylistID);
         //this.client = Client.definedClient(kNr);
         //this.stylist = Stylist.employee(coNr);
 
@@ -121,9 +133,15 @@ public class Appointment implements Serializable {
             if(i == (services.length-1)) System.out.println(".");
         }
 
+        System.out.println();
+
         PersonData pdb = new PersonData(10, 100);
-        pdb.display1S();
-        pdb.display1C();
+        pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
+        pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
+        //pdb.display();
+        //pdb.loadingAccounts("Konten.dat");
+        pdb.display1S(this.stylistID);
+        pdb.display1C(this.clientID);
 
         //client.display();
         //stylist.display();

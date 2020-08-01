@@ -33,19 +33,34 @@ public class PersonData {
         return true;
     }
 
-    public void display1S(){
+    public void display1S(int stylistID){
+        System.out.println("Stylisten-Account "+(stylistID+1)+": ");
+        stylistList[stylistID].display();
+        System.out.println();
+        System.out.println();
+    }
+
+    public void displayLastS(){
         System.out.println("Stylisten-Account "+(countS+1)+": ");
         stylistList[countS].display();
         System.out.println();
         System.out.println();
     }
 
-    public void display1C(){
-        System.out.println("Stylisten-Account "+(countC+1)+":");
+    public void display1C(int clientID){
+        System.out.println("Kunden-Account "+(clientID+1)+":");
+        clientList[clientID].display();
+        System.out.println();
+        System.out.println();
+    }
+
+    public void displayLastC(){
+        System.out.println("Kunden-Account "+(countC+1)+":");
         clientList[countC].display();
         System.out.println();
         System.out.println();
     }
+
 
     public void displayStylists() {
         for(int i = 0; i < countS; i++){

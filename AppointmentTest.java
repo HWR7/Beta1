@@ -13,7 +13,7 @@ public class AppointmentTest {
 
  */
         Appointment a1 = new Appointment(13, 30, 1, 1,"wash", "color");
-        Appointment a2 = new Appointment(1,2,2020, 13, 30,1,2, "wash", "color");
+        Appointment a2 = new Appointment(1,2,2020, 13, 30,1,1, "wash", "color");
 
         //Artikel speichern
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("termin.dat"));
@@ -25,7 +25,8 @@ public class AppointmentTest {
         Appointment b1 = (Appointment) in.readObject();
         Appointment b2 = (Appointment) in.readObject();
         b1.display();
-        b2.display();
+        //System.out.println("hi");
+        //b2.display();
         in.close();
 
     }

@@ -20,13 +20,15 @@ public class Main {
         int z1 = in1.nextInt();
         int z2 = in1.nextInt();
         pdb = new PersonData(z1, z2);
+        pdb.saveAccounts("Konten.dat");
         System.out.println("Ihre Datensätze können bis zu "+z1+" Stylisten und "+z2+" Klienten enthalten.");
         System.out.println();
 
-        System.out.println("Geben Sie ihre gewünschte Maximalmenge Terminen. (abhängig von ihren Speicherkapazitäten)"); //Tippfehler
+        System.out.println("Geben Sie ihre gewünschte Maximalmenge Terminen. (abhängig von ihren Speicherkapazitäten)");
         Scanner in2 = new Scanner(System.in);
         int z3 = in2.nextInt();
         adb = new AppointmentData(z3);
+        adb.saveAppointments("Termin.dat");
         System.out.println("Ihre Datensätze können bis zu "+z3+" Einträge enthalten.");
         System.out.println();
 
@@ -43,6 +45,7 @@ public class Main {
 
         int menu = 0;
 
+        System.out.println();
         System.out.println();
         System.out.println("Terminplaner (gewünschte Option per Zahl auswaehlen)");
         System.out.println();

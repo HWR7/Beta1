@@ -13,7 +13,7 @@ public class AccountTest{
         System.out.println();
         System.out.println("Inhalte der Datenbank db: ");
         pdb.display();
-        //db.saveSAccounts("Konten.dat");
+        //db.saveSAccounts("SKonten.dat");
         //db.saveCAccounts("CKonten.dat");
         pdb.saveAccounts("Konten.dat");
 

@@ -218,7 +218,7 @@ public class AppointmentData {
                 }
 
                  */
-
+/*
                 ObjectInputStream in = null;
                 try {
                     in = new ObjectInputStream(new FileInputStream(dat));
@@ -234,6 +234,11 @@ public class AppointmentData {
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+
+ */
+
+                AppointmentData adb = new AppointmentData(100);
+                adb.loadingAppointments("Termine.dat");
 
                 int year1 = appointmentList[j].getYear();
                 int year2 = appointmentList[j+1].getYear();

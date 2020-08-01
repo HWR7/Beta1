@@ -24,12 +24,14 @@ public class AppointmentDataTest {
         System.out.println("Terminplaner: ");
         adb.display();
 
+        System.out.println("delete: ");
         adb.delete(1);
         adb.display();
 
-        adb.saveAppointments("Termine.dat");
-        adb.bubbleSort("Termine.dat");
-        adb.display();
+        System.out.println("save: ");
+        //adb.saveAppointments("Termine.dat");
+        //adb.bubbleSort("Termine.dat");
+        //adb.display();
 
         /*
         System.out.println("Inhalt des Terminplaners; ");

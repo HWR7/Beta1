@@ -61,8 +61,8 @@ public class Main {
         System.out.println("[8]  Nur die Klientenliste aus dem Speicher laden und anzeigen");
         System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen");
 
-        System.out.println("[10] Termin eintragen und anzeigen");
-        System.out.println("[11] Stylisten eintragen und anzeigen");
+        System.out.println("[10] Termin eintragen und anzeigen ");
+        System.out.println("[11] Stylisten eintragen und anzeigen ");
         System.out.println("[12] Klienten eintragen und anzeigen");
 
         System.out.println("[13] Termin löschen");
@@ -70,9 +70,9 @@ public class Main {
         System.out.println("[15] Clienten-Konto löschen");
 
         System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze aus der Liste entfernen");
-        System.out.println("[17] Stylisten anzeigen");               //not rdy
-        System.out.println("[18] Klienten anzeigen");                //not rdy
-        System.out.println("[19] Alle Personen anzeigen");           //not rdy
+        System.out.println("[17] Stylisten anzeigen ");               //not rdy
+        System.out.println("[18] Klineten anzeigen ");                //not rdy
+        System.out.println("[19] Alle Personen anzeigen ");           //not rdy
 
         System.out.println("[20] empty");
         System.out.println("[21] empty");
@@ -85,7 +85,7 @@ public class Main {
         switch(in.nextInt()) {
             case 1:
                 System.out.println("Terminliste speichern:");
-                adb.saveAppointments("termin.dat");
+                adb.saveAppointments("Termine.dat");
                 menu = 1;
                 //Menu();
                 return menu;
@@ -141,7 +141,7 @@ public class Main {
                 menu = 9;
                 return menu;
             case 10:
-                System.out.println("Termin eintragen und anzeigen");
+                System.out.println("Termin eintragen und anzeigen ");
                 System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
                 pdb.displayStylists();
                 int f = in.nextInt();
@@ -189,7 +189,7 @@ public class Main {
                 return menu;
                 //break;
             case 11:
-                System.out.println("Stylisten eintragen und anzeigen: ");
+                System.out.println("Stylistenen eintragen und anzeigen: ");
 
                 pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
@@ -198,7 +198,7 @@ public class Main {
                 menu = 11;
                 return menu;
             case 12:
-                System.out.println("Klienten eintragen und anzeigen: ");
+                System.out.println("Klienten in die Liste eintragen und anzeigen lassen: ");
 
                 pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
@@ -249,12 +249,12 @@ public class Main {
                 menu = 17;
                 return menu;
             case 18:
-                System.out.println("[18] Klienten anzeigen");
+                System.out.println("[18] Klineten anzeigen: ");
                 pdb.displayClients();
                 menu = 18;
                 return menu;
             case 19:
-                System.out.println("[19] Alle Personen anzeigen");
+                System.out.println("[19] Alle Personen anzeigen: ");
                 pdb.displayClients();
                 menu = 19;
                 return menu;
@@ -263,7 +263,7 @@ public class Main {
                 menu = 20;
                 return menu;
             case 99:
-                System.out.println("Planer wird geschlossen");
+                System.out.println("Planer wird geschlossen.");
                 System.exit(0);
                 menu = 99;
                 //break;

@@ -51,8 +51,8 @@ public class Appointment implements Serializable {
         //pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
         //pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
-        this.client = pdb.getClient(clientID);
-        this.stylist = pdb.getStylist(stylistID);
+        this.client = pdb.getClient(clientID-1);
+        this.stylist = pdb.getStylist(stylistID-1);
         //this.client = Client.definedClient(kNr);
         //this.stylist = Stylist.employee(coNr);
 
@@ -84,8 +84,8 @@ public class Appointment implements Serializable {
         //pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
         //pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
-        this.client = pdb.getClient(clientID);
-        this.stylist = pdb.getStylist(stylistID);
+        this.client = pdb.getClient(clientID-1);
+        this.stylist = pdb.getStylist(stylistID-1);
         //this.client = Client.definedClient(kNr);
         //this.stylist = Stylist.employee(coNr);
 
@@ -118,8 +118,8 @@ public class Appointment implements Serializable {
         //pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
         //pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
-        this.client = pdb.getClient(clientID);
-        this.stylist = pdb.getStylist(stylistID);
+        this.client = pdb.getClient(clientID-1);
+        this.stylist = pdb.getStylist(stylistID-1);
         //this.client = Client.definedClient(kNr);
         //this.stylist = Stylist.employee(coNr);
 

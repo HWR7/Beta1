@@ -172,7 +172,14 @@ public class Main {
                 int d = in.nextInt();
                 int e = in.nextInt();
 
-                int g = in.nextInt();
+                int g;
+                try{
+                     g = in.nextInt();
+                }catch (Exception e1){
+                    System.out.println("Bitte geben Sie eine Telefonnummer ohne Buchstaben ein!");
+                     g = in.nextInt();
+                }
+
 
                 //String[] s = new String[3];
                 //s = h.split(",",0);
@@ -376,6 +383,7 @@ public class Main {
                 System.out.println();
                 System.out.println("[20] Alle Termine nach Datum und Zeit sortieren: ");
                 adb.bubbleSort();
+                adb.display();
 
                 menu = 20;
                 return menu;

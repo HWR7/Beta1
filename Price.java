@@ -15,6 +15,7 @@ public class Price {
     usw...
      */
 
+    //Ändern des Preises für den jeweiligen Service
     public static void change(String service, double price){
         switch(service){
             case "cut":

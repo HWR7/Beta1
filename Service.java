@@ -4,7 +4,7 @@ public class Service {
 
 
 
-    //Addieren der Zeit
+    //Addieren der Zeit mit Überprüfung der Länge des Arrays
 
     public static int sumDuration(String[] s){
 
@@ -60,6 +60,7 @@ public class Service {
         return sumP;
     }
 
+    //Die Zeit wird gesucht für den jeweiligen Service
     public static int searchDuration(String s){
         int d = -1;
         switch(s){
@@ -83,7 +84,7 @@ public class Service {
         return d;
     }
 
-    //Addieren der Preise
+    //Addieren der Preise mit Überprüfung der Länge des Arrays
 
     public static double sumPrice(String[] s){
 
@@ -139,6 +140,7 @@ public class Service {
         return sumP;
     }
 
+    //Der Peris für den jeweiligen Service wird gesucht
     public static double searchPrice(String s){
         double p = -1;
         switch(s){
@@ -164,7 +166,6 @@ public class Service {
 
 
     //macht eine unbekannte Anzahl an Strings in ein Array rein
-    // use case in der Auszuführenden Testklasse
     public static String[] stringsInArray(String... s){
         return s;
     }
@@ -178,7 +179,6 @@ public class Service {
         }
     }
 
-    //not in use
     public static void display(String... s){
         for(int i=0; i<s.length; i++){
             System.out.println(s[i]);

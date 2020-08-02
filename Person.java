@@ -8,6 +8,7 @@ public class Person implements Serializable {
     private String fname;
     private String lname;
 
+    //reine zum Testen der Vererbung
     public Person(String fname, String lname){
         this.fname = fname;
         this.lname = lname;

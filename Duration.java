@@ -7,6 +7,7 @@ public class Duration {
     private static int dry = 30;
     private static int wash = 30;
 
+    //Änderung der Dauer für den jeweiligen Service
     public static void change(String service, int price){
         switch(service){
             case "cut":

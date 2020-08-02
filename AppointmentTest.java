@@ -13,14 +13,17 @@ public class AppointmentTest {
 
  */
 
+        //Test erfolgreich
         PersonData pdb = new PersonData(10, 100);
         pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
         pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
         pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
         pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
 
+        //erfolgreich
         pdb.saveAccounts("Konten.dat");
 
+        //erflogreich
         Appointment a1 = new Appointment(1, 1,"wash", "color");
         Appointment a2 = new Appointment(13, 30, 1, 1,"wash", "color");
         Appointment a3 = new Appointment(1,2,2020, 13, 30,1,1, "wash", "color");
@@ -31,6 +34,7 @@ public class AppointmentTest {
         out.writeObject(a2);
         out.close();
 
+        //Test erfolgreich
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("Termin.dat"));
         Appointment b1 = (Appointment) in.readObject();
         //Appointment b2 = (Appointment) in.readObject();

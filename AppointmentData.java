@@ -48,13 +48,13 @@ public class AppointmentData {
 
         Appointment a = new Appointment(day, month, year, h, min, stylistID, clientID, s);
 
-        if(linearSearchYMD(a) == true){
+        if(linearSearchYMDHM(a) == true){
 
             //System.out.println(count);
             //appointmentList[count-1].display();
             //appointmentList[linearSearchYMDIndex(a)].display();
 
-            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDIndex(a)]);
+            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDHMIndex(a)]);
 
             if(checkOverlap == true) {
                 System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
@@ -73,6 +73,7 @@ public class AppointmentData {
 
     }
 
+    //insert Appointment for today with overlap check and sort
     public boolean insertCheckToday(int h,int min, int stylistID, int clientID, String... s){
 
         //System.out.println(count);
@@ -140,6 +141,7 @@ public class AppointmentData {
         return checkOverlap;
     }
 
+    //Suche nach Termin durch Datum
     public boolean linearSearchYMD(Appointment a) {
         //boolean found = false;
         for (int i = 0; i < count; i++) {
@@ -157,6 +159,7 @@ public class AppointmentData {
         return false;
     }
 
+    //Suche nach Termin durch gleiches Datum und Zeit
     public boolean linearSearchYMDHM(Appointment a) {
         //boolean found = false;
         for (int i = 0; i < count; i++) {
@@ -204,6 +207,7 @@ public class AppointmentData {
         return index;
     }
 
+    //Suche nach dem Index des gesuchten Termins
     public int linearSearchYMDHMIndex(Appointment a){
         int index = 0;
         for(int i = 0; i < count; i++){
@@ -221,11 +225,13 @@ public class AppointmentData {
         return index;
     }
 
+    //Ausgabe eines Termins
     public void displayOne(int nr) {
             System.out.println("Termin "+(nr)+":");
             appointmentList[nr-1].display();
     }
 
+    //Ausgabe aller Termine
     public void display() {
         for(int i = 0; i < count; i++){
             System.out.println("Termin "+(i+1)+":");
@@ -233,6 +239,7 @@ public class AppointmentData {
         }
     }
 
+    //Sicherung des Termins durch anzugebenen Dateinamen in dieser danach benannten Datei
     public void saveAppointments(String dat) {
         OutputStream out = null;
         try {
@@ -249,6 +256,7 @@ public class AppointmentData {
         }
     }
 
+    //Laden der genannten Datei
     public void loadingAppointments(String dat) {
         ObjectInputStream in = null;
         try {
@@ -279,6 +287,7 @@ public class AppointmentData {
         return checkExpired;
     }
 
+    //Löschen eines Termins mit der Nummer des Termins(index +1)
     public void delete(int nr) {
         for (int i = 0; i < appointmentList.length; i++) {
             if (appointmentList[i] == appointmentList[nr]) {

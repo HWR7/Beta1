@@ -33,6 +33,7 @@ public class PersonData {
         return true;
     }
 
+    //nur einen Stylisten ausgeben per stylistID (index)
     public void display1S(int stylistID){
         System.out.println("Stylisten-Account "+(stylistID+1)+": ");
         stylistList[stylistID].shortDisplay();
@@ -40,6 +41,7 @@ public class PersonData {
         System.out.println();
     }
 
+    //Ausgabe des letzten Stylisten
     public void displayLastS(){
         System.out.println("Stylisten-Account "+(countS)+": ");
         stylistList[countS-1].shortDisplay();
@@ -47,6 +49,7 @@ public class PersonData {
         System.out.println();
     }
 
+    //Ausgabe des gesuchten Klientens mit seiner ID (Index aus dem Array)
     public void display1C(int clientID){
         System.out.println("Kunden-Account "+(clientID+1)+":");
         clientList[clientID].shortDisplay();
@@ -54,6 +57,7 @@ public class PersonData {
         System.out.println();
     }
 
+    //Ausgabe des letzten Klientens
     public void displayLastC(){
         System.out.println("Kunden-Account "+(countC)+":");
         clientList[countC-1].shortDisplay();
@@ -61,7 +65,7 @@ public class PersonData {
         System.out.println();
     }
 
-
+    //Ausgabe aller Stylisten
     public void displayStylists() {
         for(int i = 0; i < countS; i++){
             System.out.println("Stylisten-Account "+(i+1)+": ");
@@ -71,6 +75,7 @@ public class PersonData {
         }
     }
 
+    //Ausgabe aller Klienten
     public void displayClients() {
         for(int j = 0; j < countC; j++){
             System.out.println("Client-Account "+(j+1)+":");
@@ -79,6 +84,7 @@ public class PersonData {
         }
     }
 
+    //Ausgabe aller Benutzerkonten (Stylisten+Klienten)
     public void display() {
         for(int i = 0; i < countS; i++){
             System.out.println("Stylisten-Account "+(i+1)+": ");
@@ -93,6 +99,7 @@ public class PersonData {
         }
     }
 
+    //Sicherung aller Accounts/Benutzerkonten
     public void saveAccounts(String s) {
         OutputStream out = null;
         try {
@@ -110,6 +117,7 @@ public class PersonData {
         }
     }
 
+    //Sicherung aller Klienten-Accounts auf einen extra angegebenen Speicherort
     public void saveCAccounts(String s) {
         OutputStream out = null;
         try {
@@ -125,6 +133,7 @@ public class PersonData {
         }
     }
 
+    //Speicherung aller Stylisten-Accounts auf einen extra angegebenen Speicherort
     public void saveSAccounts(String s) {
         OutputStream out = null;
         try {
@@ -140,6 +149,7 @@ public class PersonData {
         }
     }
 
+    //Laden aller Stylisten Accounts (Achutng: Es dürfen nur Stylisten im Array vorhanden sein)
     public void loadingSAccounts(String s) {
         ObjectInputStream in = null;
         try {
@@ -158,6 +168,7 @@ public class PersonData {
         }
     }
 
+    //Laden aller Klienten Accounts (Achutng: Es dürfen nur Klienten im Array vorhanden sein)
     public void loadingCAccounts(String s) {
         ObjectInputStream in = null;
         try {
@@ -176,6 +187,7 @@ public class PersonData {
         }
     }
 
+    //Laden aller Accounts aus dem Array
     public void loadingAccounts(String s) {
         ObjectInputStream in = null;
         try {
@@ -196,6 +208,7 @@ public class PersonData {
         }
     }
 
+    //Klient wird gelöscht mithilfe seiner Kundennummer (index+1)
     public void deleteClient(int nr) {
         for (int i = 0; i < clientList.length; i++) {
             if (clientList[i] == clientList[nr]) {
@@ -209,6 +222,7 @@ public class PersonData {
         }
     }
 
+    //Stylist wird gelöscht mithilfe seiner StylistenID (index+1)
     public void deleteStylist(int nr) {
         for (int i = 0; i < stylistList.length; i++) {
             if (stylistList[i] == stylistList[nr]) {
@@ -222,29 +236,18 @@ public class PersonData {
         }
     }
 
+    //Klient wird gesucht mithilfe seiner Kundennummer (index+1)
     public Client getClient(int number){
         Client client = new Client();
         client = clientList[number-1];
         return client;
     }
 
+    //Stylist wird gesucht mithilfe seiner StylistenID (index+1)
     public Stylist getStylist(int number){
         Stylist stylist = new Stylist();
         stylist = stylistList[number-1];
         return stylist;
-    }
-
-    public Client findClient(String fname){
-        Client client = new Client();
-
-        for(int i = 0; i < clientList.length; i++){
-            if(clientList[i].getLname() == fname){
-                client = clientList[i];
-                return client;
-            }
-        }
-
-        return client;
     }
 
     public int getMaxS() {

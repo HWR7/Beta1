@@ -14,6 +14,7 @@ public class Stylist extends Person implements Serializable {
     private long phone;
     private String[] special;
 
+    //für Platzhalter
     public Stylist() {
         super(null, null);
         //this.id = -1;
@@ -148,6 +149,7 @@ public class Stylist extends Person implements Serializable {
 
  */
 
+    //kurze Variante zum Ausgeben von Stylist
     public void shortDisplay(){
         //System.out.println("MitarbeiterID: "+id);
         System.out.println("Name: "+getLname()+", "+getFname());
@@ -155,6 +157,7 @@ public class Stylist extends Person implements Serializable {
         displaySpecial();
     }
 
+    //übersichtlichere Variante zur Ausgabe von Stylists
     public void display(){
         //System.out.println("MitarbeiterID: "+id);
         System.out.println("Nachname: "+ getLname());
@@ -164,6 +167,7 @@ public class Stylist extends Person implements Serializable {
         displaySpecial();
     }
 
+    //Ausgabe der Specials eines Stylisten, Hilfsmethode für display - Hauptmethoden
     public void displaySpecial(){
         System.out.print("Specialisation: ");
         for(int i = 0; i < special.length; i++){

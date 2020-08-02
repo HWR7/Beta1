@@ -23,7 +23,7 @@ public class Time implements Serializable {
         this.h = now.get(GregorianCalendar.HOUR_OF_DAY);
     }
 
-    //Aufruf-Funktion
+    //Aufruf-Funktion mit Überprüfung der eingegebenen Zeit-Werte
     public void display(){
         if(h<0 || 23<h) {
             System.out.println("Error: Please enter a valid number for the hour(s).");

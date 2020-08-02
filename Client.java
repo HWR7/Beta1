@@ -9,6 +9,7 @@ public class Client extends Person implements Serializable {
     private long phone;
     private String email;
 
+    //Client mit Platzhalter
     public Client() {
         super(null, null);
         //this.kNr = -1;
@@ -24,6 +25,7 @@ public class Client extends Person implements Serializable {
     }
 
     //AlternativDaten
+    //no in use, just for experiments
     /*
     public static Client definedClient(int kNr){
 
@@ -58,12 +60,14 @@ public class Client extends Person implements Serializable {
 
      */
 
+    //verkürzte Ausgabe, da bei termin sonst zu viel ausgebeben wird / Text zu lang wird
     public void shortDisplay(){
         //System.out.println("Kundennummer: "+kNr);
         System.out.println("Name: "+getLname()+", "+getFname());
         System.out.println("Phone: "+phone+"; E-Mail: "+getEmail());
     }
 
+    //übersichtlichere Variante
     public void display(){
         //System.out.println("Kundennummer: "+kNr);
         System.out.println("Nachname: "+ getLname());

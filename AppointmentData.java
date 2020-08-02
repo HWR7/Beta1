@@ -18,6 +18,8 @@ public class AppointmentData {
         if(count >= max) return false;
         appointmentList[count] = new Appointment(day, month, year, h, min,stylistID, clientID, s);
         count++;
+        displayOne(count);
+        System.out.println("Ein Termin wurde hinzugefügt.");
         bubbleSort();
         return true;
     }
@@ -27,6 +29,8 @@ public class AppointmentData {
         if(count >= max) return false;
         appointmentList[count] = new Appointment(h, min, stylistID, clientID, s);
         count++;
+        displayOne(count);
+        System.out.println("Ein Termin wurde hinzugfügt.");
         bubbleSort();
         return true;
     }
@@ -60,8 +64,10 @@ public class AppointmentData {
             }
         }
         appointmentList[count] = new Appointment(day, month, year, h, min, stylistID, clientID, s);
-        bubbleSort();
         count++;
+        displayOne(count);
+        System.out.println("Ein Termin wurde hinzugfügt.");
+        bubbleSort();
         return true;
 
 
@@ -95,8 +101,10 @@ public class AppointmentData {
             }
         }
         appointmentList[count] = new Appointment(h, min, stylistID, clientID, s);
-        bubbleSort();
         count++;
+        displayOne(count);
+        System.out.println("Ein Termin wurde hinzugfügt.");
+        bubbleSort();
         return true;
 
 
@@ -214,8 +222,8 @@ public class AppointmentData {
     }
 
     public void displayOne(int nr) {
-            System.out.println("Termin "+(nr+1)+":");
-            appointmentList[nr].display();
+            System.out.println("Termin "+(nr)+":");
+            appointmentList[nr-1].display();
     }
 
     public void display() {

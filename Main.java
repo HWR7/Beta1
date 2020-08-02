@@ -32,6 +32,7 @@ public class Main {
         System.out.println();
 
  */
+
         pdb = new PersonData(10, 100);
         pdb.loadingAccounts("Konten.dat");
         adb = new AppointmentData(1000);
@@ -61,19 +62,19 @@ public class Main {
         System.out.println("[4]  Nur die Klientenliste speichern");
         System.out.println("[5]  Nur die Stylistenliste speichern");
 
-        System.out.println("[6]  Termine aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
-        System.out.println("[7]  Alle Konten (Stylisten + Kunden) aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
-        System.out.println("[8]  Nur die Klientenliste aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
-        System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
+        System.out.println("[6]  Termine aus dem Speicher laden und anzeigen (Nicht gespeicherte Daten können verloren gehen)");
+        System.out.println("[7]  Alle Konten (Stylisten + Kunden) aus dem Speicher laden und anzeigen (Nicht gespeicherte Daten können verloren gehen)");
+        System.out.println("[8]  Nur die Klientenliste aus dem Speicher laden und anzeigen (Nicht gespeicherte Daten können verloren gehen)");
+        System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen (Nicht gespeicherte Daten können verloren gehen)");
 
         System.out.println("[10] Termin eintragen und anzeigen ");
-        System.out.println("[21] Termin für heute eintragen und anzeigen lassen");
+        System.out.println("[101]Termin für heute eintragen und anzeigen lassen");
         System.out.println("[11] Stylisten eintragen und anzeigen ");
         System.out.println("[12] Klienten eintragen und anzeigen");
 
         System.out.println("[13] Termin löschen");
         System.out.println("[14] Stylisten-Konto löschen");
-        System.out.println("[15] Clienten-Konto löschen");
+        System.out.println("[15] Klienten-Konto löschen");
 
         System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze/Termine aus der Liste entfernen");
         System.out.println("[17] Stylisten anzeigen ");
@@ -114,7 +115,7 @@ public class Main {
             case 4:
                 System.out.println();
                 System.out.println("[4] Nur die Klientenliste speichern: ");
-                pdb.saveCAccounts("Konten.dat");
+                pdb.saveCAccounts("CKonten.dat");
                 menu = 4;
                 //Menu();
                 return menu;
@@ -122,7 +123,7 @@ public class Main {
             case 5:
                 System.out.println();
                 System.out.println("[5] Nur die Stylistenliste speichern: ");
-                pdb.saveSAccounts("Konten.dat");
+                pdb.saveSAccounts("SKonten.dat");
                 menu = 5;
                 return menu;
             case 6:
@@ -142,21 +143,23 @@ public class Main {
             case 8:
                 System.out.println();
                 System.out.println("[8] Nur die Klientenliste aus dem Speicher laden: ");
-                pdb.loadingCAccounts("Konten.dat");
+                pdb.loadingCAccounts("CKonten.dat");
                 pdb.display();
                 menu = 8;
                 return menu;
             case 9:
                 System.out.println();
                 System.out.println("[9] Nur die Stylistenliste aus dem Speicher laden: ");
-                pdb.loadingSAccounts("Konten.dat");
+                pdb.loadingSAccounts("SKonten.dat");
                 pdb.display();
                 menu = 9;
                 return menu;
             case 10:
                 System.out.println();
                 System.out.println("[10] Termin eintragen und anzeigen ");
+                System.out.println();
                 System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
+                System.out.println();
                 pdb.displayStylists();
                 int f = in.nextInt();
 
@@ -165,37 +168,64 @@ public class Main {
                 int a = in.nextInt();
                 int b = in.nextInt();
                 int c = in.nextInt();
+
                 int d = in.nextInt();
                 int e = in.nextInt();
 
                 int g = in.nextInt();
-                String h = in.nextLine();
+
+                //String[] s = new String[3];
+                //s = h.split(",",0);
+                //for(String kp : s) System.out.println(kp);
 
                 //String[] s = null;
                 //String[] s = stringsInArray(in.nextLine());
-                //int count = 0;
 
-                String[] s = new String[3];
-                s = h.split(",",0);
-                for(String kp : s) System.out.println(kp);
-                /*
-                h = in.nextLine();
-                for(int count = 0; count <= 3;){
-                    if(h.contains("cut")) s[count] = "cut";
+                int count = 0;
+                String[] s = new String[4];
+                String h = in.next();
+
+                if(h.contains("cut") == true) {
+                    s[count] = "cut";
+                    //System.out.println(s[count]);
                     count++;
-                    if(h.contains("color")) s[count] = "color";
-                    count++;
-                    if(h.contains("wash")) s[count] = "wash";
-                    count++;
-                    if(h.contains("dry")) s[count] = "dry";
-                    count++;
+
                 }
-                 */
+                if(h.contains("color")== true) {
+                    s[count] = "color";
+                    //System.out.println(s[count]);
+                    count++;
 
-                adb.insertCheckAppointment(a,b,c,d, e, f, g, s);
+                }
+                if(h.contains("wash")==true) {
+                    s[count] = "wash";
+                    //System.out.println(s[count]);
+                    count++;
 
-                System.out.println("Ein Termin wurde hinzugfügt.");
-                adb.displayOne(adb.getCount());
+                }
+                if(h.contains("dry")==true){
+                    s[count] = "dry";
+                    //System.out.println(s[count]);
+                    count++;
+
+                }
+
+                //System.out.println();
+                //for(int i = 0; i < s.length; i++){
+                //    System.out.println(s[i]);
+                //}
+                //System.out.println(s.length);
+
+                int number = s.length - nullCounter(s);
+                //System.out.println(number);
+                String[] z = new String[number];
+
+                for(int i = 0; i < number; i++){
+                    z[i] = s[i];
+                }
+
+                adb.insertCheckAppointment(a,b,c,d, e, f, g, z);
+
                 System.out.println();
 
                 menu = 10;
@@ -206,53 +236,51 @@ public class Main {
                 System.out.println();
                 System.out.println("[11] Stylistenen eintragen und anzeigen: ");
 
-                pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
+                //pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
                 System.out.println("Geben Sie alle Kundendaten ein. (Vorname, Nachname, E-Mail, Telefonnummer, Service(s)");
-                //Scanner in = new Scanner(System.in);
                 String a3 = in.next();
                 String b3 = in.next();
                 String c3 = in.next();
                 int d3 = in.nextInt();
-                String h3 = in.nextLine();
 
-                String[] s3 = new String[3];
-                for(int i = 0; i > s3.length; i++){
-                    System.out.println((i+1)+s3[i]);
-                }
-                int count = 0;
-                for(int i = 0; i <= 3; i++){
-                    if(h3.contains("cut")) {
-                        s3[count] = "cut";
-                        count++;
-                    }
+                int count3 = 0;
+                String[] s3 = new String[4];
+                String h3 = in.next();
 
-                    if(h3.contains("color")) {
-                        s3[count] = "color";
-                        count++;
-                    }
-
-                    if(h3.contains("wash")) {
-                        s3[count] = "wash";
-                        count++;
-                    }
-
-                    if(h3.contains("dry")) {
-                        s3[count] = "dry";
-                        count++;
-                    }
+                if(h3.contains("cut") == true) {
+                    s3[count3] = "cut";
+                    //System.out.println(s3[count3]);
+                    count3++;
 
                 }
-                for(int i = 0; i > s3.length; i++){
-                    System.out.println(s3[i]);
+                if(h3.contains("color")== true) {
+                    s3[count3] = "color";
+                    //System.out.println(s3[count3]);
+                    count3++;
+
+                }
+                if(h3.contains("wash")==true) {
+                    s3[count3] = "wash";
+                    //System.out.println(s3[count3]);
+                    count3++;
+
+                }
+                if(h3.contains("dry")==true){
+                    s3[count3] = "dry";
+                    //System.out.println(s3[count3]);
+                    count3++;
+
                 }
 
-                //String[] s3 = stringsInArray(in.nextLine());
-                //s3 = h3.split(",",0);
-                //for(String kp : s3) System.out.println(kp);
+                int number3 = s3.length - nullCounter(s3);
+                String[] z3 = new String[number3];
 
+                for(int i = 0; i < number3; i++){
+                    z3[i] = s3[i];
+                }
 
-                pdb.insertStylist(a3, b3, c3, d3, s3);
+                pdb.insertStylist(a3, b3, c3, d3, z3);
 
                 pdb.displayLastS();
                 System.out.println();
@@ -284,8 +312,10 @@ public class Main {
 
                 int index1 = in.nextInt() - 1;
                 adb.delete(index1);
-
                 System.out.println("Termin "+(index1+1)+" wurde gelöscht.");
+
+                adb.bubbleSort();
+                System.out.println("Terminliste ist sortiert.");
 
                 menu = 13;
                 return menu;
@@ -330,7 +360,7 @@ public class Main {
                 return menu;
             case 18:
                 System.out.println();
-                System.out.println("[18] Klineten anzeigen: ");
+                System.out.println("[18] Klienten anzeigen: ");
                 pdb.displayClients();
 
                 menu = 18;
@@ -338,7 +368,7 @@ public class Main {
             case 19:
                 System.out.println();
                 System.out.println("[19] Alle Personen anzeigen: ");
-                pdb.displayClients();
+                pdb.display();
 
                 menu = 19;
                 return menu;
@@ -349,10 +379,11 @@ public class Main {
 
                 menu = 20;
                 return menu;
-            case 21:
+            case 101:
                 System.out.println();
                 System.out.println("[21] Termin für heute eintragen und anzeigen lassen: ");
                 System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
+                System.out.println();
                 pdb.displayStylists();
                 int f1 = in.nextInt();
 
@@ -361,17 +392,46 @@ public class Main {
                 int e1 = in.nextInt();
 
                 int g1 = in.nextInt();
-                String h1 = in.nextLine();
 
-                String[] s1 = stringsInArray(in.nextLine());
+                int count1 = 0;
+                String[] s1 = new String[4];
+                String h1 = in.next();
 
-                s = h1.split(",",0);
-                for(String kp : s1) System.out.println(s1);System.out.println(s1);
+                if(h1.contains("cut") == true) {
+                    s1[count1] = "cut";
+                    //System.out.println(s1[count1]);
+                    count1++;
 
-                adb.insertCheckToday(d1, e1, f1, g1, s1);
+                }
+                if(h1.contains("color")== true) {
+                    s1[count1] = "color";
+                    //System.out.println(s1[count1]);
+                    count1++;
 
-                System.out.println("Ein Termin wurde hinzugfügt.");
-                adb.displayOne(adb.getCount());
+                }
+                if(h1.contains("wash")==true) {
+                    s1[count1] = "wash";
+                    //System.out.println(s1[count1]);
+                    count1++;
+
+                }
+                if(h1.contains("dry")==true){
+                    s1[count1] = "dry";
+                    //System.out.println(s1[count1]);
+                    count1++;
+
+                }
+
+                int number1 = s1.length - nullCounter(s1);
+                String[] z1 = new String[number1];
+
+                for(int i = 0; i < number1; i++){
+                    z1[i] = s1[i];
+                }
+
+                System.out.println();
+                adb.insertCheckToday(d1, e1, f1, g1, z1);
+
                 System.out.println();
 
                 menu = 21;
@@ -474,6 +534,17 @@ public class Main {
 
     public static String[] stringsInArray(String... s){
         return s;
+    }
+
+    //zählt die null-Werte in einem Array
+    public static int nullCounter(String[] s){
+        int count = 0;
+        for(int i = 0; i < s.length; i++){
+            if (s[i] == null){
+                count++;
+            }
+        }
+        return count;
     }
 
 }

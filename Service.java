@@ -77,6 +77,8 @@ public class Service {
                 break;
             default:
                 System.out.print("Error 03");
+                d = 0;
+                break;
         }
         return d;
     }
@@ -154,6 +156,8 @@ public class Service {
                 break;
             default:
                 System.out.print("Error 03");
+                p = 0;
+                break;
         }
         return p;
     }

@@ -13,14 +13,13 @@ public class Main {
 	// write your code here
         //boolean listeda= false
 
-
-
+/*
         System.out.println("Geben Sie Ihre gewünschte Maximalmenge an Stylisten und Klienten an. (1.Stylist; 2.Klient)");
         Scanner in1 = new Scanner(System.in);
         int z1 = in1.nextInt();
         int z2 = in1.nextInt();
         pdb = new PersonData(z1, z2);
-        pdb.saveAccounts("Konten.dat");
+        //pdb.saveAccounts("Konten.dat");
         System.out.println("Ihre Datensätze können bis zu "+z1+" Stylisten und "+z2+" Klienten enthalten.");
         System.out.println();
 
@@ -28,9 +27,15 @@ public class Main {
         Scanner in2 = new Scanner(System.in);
         int z3 = in2.nextInt();
         adb = new AppointmentData(z3);
-        adb.saveAppointments("Termine.dat");
+        //adb.saveAppointments("Termine.dat");
         System.out.println("Ihre Datensätze können bis zu "+z3+" Einträge enthalten.");
         System.out.println();
+
+ */
+        pdb = new PersonData(10, 100);
+        pdb.loadingAccounts("Konten.dat");
+        adb = new AppointmentData(1000);
+        adb.loadingAppointments("Termine.dat");
 
         while(menu != 99){
             Menu();
@@ -56,19 +61,19 @@ public class Main {
         System.out.println("[4]  Nur die Klientenliste speichern");
         System.out.println("[5]  Nur die Stylistenliste speichern");
 
-        System.out.println("[6]  Termine aus dem Speicher laden");
-        System.out.println("[7]  Alle Konten (Stylisten + Kunden) aus dem Speicher laden und anzeigen");
-        System.out.println("[8]  Nur die Klientenliste aus dem Speicher laden und anzeigen");
-        System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen");
+        System.out.println("[6]  Termine aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
+        System.out.println("[7]  Alle Konten (Stylisten + Kunden) aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
+        System.out.println("[8]  Nur die Klientenliste aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
+        System.out.println("[9]  Nur die Stylistenliste aus dem Speicher laden und anzeigen (Daten können verloren gehen)");
 
         System.out.println("[10] Termin eintragen und anzeigen ");
-        System.out.println("[21] Termin für heute eintragen und anzeigen");
+        System.out.println("[21] Termin für heute eintragen und anzeigen lassen");
         System.out.println("[11] Stylisten eintragen und anzeigen ");
         System.out.println("[12] Klienten eintragen und anzeigen");
 
         System.out.println("[13] Termin löschen");
         System.out.println("[14] Stylisten-Konto löschen");
-        System.out.println("[15] Klienten-Konto löschen");
+        System.out.println("[15] Clienten-Konto löschen");
 
         System.out.println("[16] Datenliste sortieren und abgelaufene Datensätze/Termine aus der Liste entfernen");
         System.out.println("[17] Stylisten anzeigen ");
@@ -122,7 +127,7 @@ public class Main {
                 return menu;
             case 6:
                 System.out.println();
-                System.out.println("[6] Termine aus dem Speicher laden: ");
+                System.out.println("[6] Termine aus dem Speicher laden und anzeigen: ");
                 pdb.loadingAccounts("Konten.dat");
                 pdb.display();
                 menu = 6;
@@ -151,11 +156,11 @@ public class Main {
             case 10:
                 System.out.println();
                 System.out.println("[10] Termin eintragen und anzeigen ");
-                System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die Stylisten-ID ihres Stylisten und fügen Sie diese ein: ");
+                System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
                 pdb.displayStylists();
                 int f = in.nextInt();
 
-                System.out.println("Geben Sie Ihren gewünschten Termin an. (day, month, year, hour, min, Kundennummer, service(s))");
+                System.out.println("Geben Sie ihren gewünschten Termin an. (day, month, year, hour, min, Kundennummer, service(s))");
                 //Scanner in = new Scanner(System.in);
                 int a = in.nextInt();
                 int b = in.nextInt();
@@ -167,12 +172,12 @@ public class Main {
                 String h = in.nextLine();
 
                 //String[] s = null;
-                String[] s = stringsInArray(in.nextLine());
+                //String[] s = stringsInArray(in.nextLine());
                 //int count = 0;
 
+                String[] s = new String[3];
                 s = h.split(",",0);
-                for(String kp : s) System.out.println(s);System.out.println(s);
-
+                for(String kp : s) System.out.println(kp);
                 /*
                 h = in.nextLine();
                 for(int count = 0; count <= 3;){
@@ -199,21 +204,76 @@ public class Main {
                 //break;
             case 11:
                 System.out.println();
-                System.out.println("[11] Stylisten eintragen und anzeigen: ");
+                System.out.println("[11] Stylistenen eintragen und anzeigen: ");
 
                 pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
+                System.out.println("Geben Sie alle Kundendaten ein. (Vorname, Nachname, E-Mail, Telefonnummer, Service(s)");
+                //Scanner in = new Scanner(System.in);
+                String a3 = in.next();
+                String b3 = in.next();
+                String c3 = in.next();
+                int d3 = in.nextInt();
+                String h3 = in.nextLine();
+
+                String[] s3 = new String[3];
+                for(int i = 0; i > s3.length; i++){
+                    System.out.println((i+1)+s3[i]);
+                }
+                int count = 0;
+                for(int i = 0; i <= 3; i++){
+                    if(h3.contains("cut")) {
+                        s3[count] = "cut";
+                        count++;
+                    }
+
+                    if(h3.contains("color")) {
+                        s3[count] = "color";
+                        count++;
+                    }
+
+                    if(h3.contains("wash")) {
+                        s3[count] = "wash";
+                        count++;
+                    }
+
+                    if(h3.contains("dry")) {
+                        s3[count] = "dry";
+                        count++;
+                    }
+
+                }
+                for(int i = 0; i > s3.length; i++){
+                    System.out.println(s3[i]);
+                }
+
+                //String[] s3 = stringsInArray(in.nextLine());
+                //s3 = h3.split(",",0);
+                //for(String kp : s3) System.out.println(kp);
+
+
+                pdb.insertStylist(a3, b3, c3, d3, s3);
+
                 pdb.displayLastS();
+                System.out.println();
 
                 menu = 11;
                 return menu;
             case 12:
 
-                System.out.println("[12] Klienten in die Liste eintragen und anzeigen: ");
+                System.out.println("[12] Klienten in die Liste eintragen und anzeigen lassen: ");
 
-                pdb.insertClient("Chanto", "Mueller", "c.mueller@mail.de", 123123);
+                System.out.println("Geben Sie alle Kundendaten ein. (Vorname, Nachname, E-Mail, Telefonnummer");
+                //Scanner in = new Scanner(System.in);
+                String a2 = in.next();
+                String b2 = in.next();
+                String c2 = in.next();
+                int d2 = in.nextInt();
+
+                pdb.insertClient(a2, b2, c2, d2);
 
                 pdb.displayLastC();
+                System.out.println();
 
                 menu = 12;
                 return menu;
@@ -270,7 +330,7 @@ public class Main {
                 return menu;
             case 18:
                 System.out.println();
-                System.out.println("[18] Klienten anzeigen: ");
+                System.out.println("[18] Klineten anzeigen: ");
                 pdb.displayClients();
 
                 menu = 18;
@@ -292,11 +352,11 @@ public class Main {
             case 21:
                 System.out.println();
                 System.out.println("[21] Termin für heute eintragen und anzeigen lassen: ");
-                System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die Stylisten-ID ihres Stylisten und fügen Sie diese ein: ");
+                System.out.println("Hier sehen Sie unsere Stylisten. Suchen Sie die StylistenID ihres Stylisten und fügen Sie diese ein: ");
                 pdb.displayStylists();
                 int f1 = in.nextInt();
 
-                System.out.println("Geben Sie Ihren gewünschten Termin an. (hour, min, Kundennummer, service(s))");
+                System.out.println("Geben Sie ihren gewünschten Termin an. (hour, min, Kundennummer, service(s))");
                 int d1 = in.nextInt();
                 int e1 = in.nextInt();
 
@@ -367,7 +427,7 @@ public class Main {
                 Menu();
             }
             else if (menu == 3){
-                System.out.println("Geben Sie Ihre gewünschte Maximalmenge an Terminen an. (abhängig von Ihren Speicherkapazitäten)");
+                System.out.println("Geben Sie ihre gewünschte Maximalmenge an Terminen an. (abhängig von Ihren Speicherkapazitäten)");
                 Scanner in = new Scanner(System.in);
                 //int a = in.nextInt();
                 pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");

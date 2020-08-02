@@ -79,13 +79,13 @@ public class AppointmentData {
 
         Appointment a = new Appointment(h, min, stylistID, clientID, s);
 
-        if(linearSearchYMD(a) == true){
+        if(linearSearchYMDHM(a) == true){
 
             //System.out.println(count);
             //appointmentList[count-1].display();
             //appointmentList[linearSearchYMDIndex(a)].display();
 
-            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDIndex(a)]);
+            boolean checkOverlap = checkOverlap(a, appointmentList[linearSearchYMDHMIndex(a)]);
 
             if(checkOverlap == true) {
                 System.out.println("Dieser Termin überschneidet sich mit einem anderen Termin und wird gelöscht.");
@@ -137,7 +137,10 @@ public class AppointmentData {
         for (int i = 0; i < count; i++) {
             if (appointmentList[i].getYear() == a.getYear()
                     && appointmentList[i].getMonth() == a.getMonth()
-                    && appointmentList[i].getDay() == a.getDay()) {
+                    && appointmentList[i].getDay() == a.getDay()
+                    && appointmentList[i].getHour() == a.getHour()
+                    && appointmentList[i].getMin() == a.getMin()
+            ) {
                 //found = true;
                 //System.out.println("found");
                 return true;
@@ -146,12 +149,62 @@ public class AppointmentData {
         return false;
     }
 
+    public boolean linearSearchYMDHM(Appointment a) {
+        //boolean found = false;
+        for (int i = 0; i < count; i++) {
+            if (appointmentList[i].getYear() == a.getYear()
+                    && appointmentList[i].getMonth() == a.getMonth()
+                    && appointmentList[i].getDay() == a.getDay()
+                    && appointmentList[i].getHour() == a.getHour()
+                    && appointmentList[i].getMin() == a.getMin()
+            ) {
+                //found = true;
+                //System.out.println("found");
+                return true;
+            }
+        }
+        return false;
+    }
+/*
+    public boolean linearSearchEmail(Appointment a) {
+        //boolean found = false;
+        for (int i = 0; i < count; i++) {
+            Client client = appointmentList[i].getClient();
+            if (
+            ) {
+                //found = true;
+                //System.out.println("found");
+                return true;
+            }
+        }
+        return false;
+    }
+
+ */
+
     public int linearSearchYMDIndex(Appointment a){
         int index = 0;
         for(int i = 0; i < count; i++){
             if(appointmentList[i].getYear() == a.getYear()
                     && appointmentList[i].getMonth() == a.getMonth()
                     && appointmentList[i].getDay() == a.getDay()){
+                index = i;
+                //System.out.println("found");
+                return index;
+            }
+        }
+        return index;
+    }
+
+    public int linearSearchYMDHMIndex(Appointment a){
+        int index = 0;
+        for(int i = 0; i < count; i++){
+            if(appointmentList[i].getYear() == a.getYear()
+                    && appointmentList[i].getMonth() == a.getMonth()
+                    && appointmentList[i].getDay() == a.getDay()
+                    && appointmentList[i].getHour() == a.getHour()
+                    && appointmentList[i].getMin() == a.getMin()
+            ){
                 index = i;
                 //System.out.println("found");
                 return index;

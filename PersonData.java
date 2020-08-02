@@ -41,8 +41,8 @@ public class PersonData {
     }
 
     public void displayLastS(){
-        System.out.println("Stylisten-Account "+(countS+1)+": ");
-        stylistList[countS].shortDisplay();
+        System.out.println("Stylisten-Account "+(countS)+": ");
+        stylistList[countS-1].shortDisplay();
         System.out.println();
         System.out.println();
     }
@@ -55,8 +55,8 @@ public class PersonData {
     }
 
     public void displayLastC(){
-        System.out.println("Kunden-Account "+(countC+1)+":");
-        clientList[countC].shortDisplay();
+        System.out.println("Kunden-Account "+(countC)+":");
+        clientList[countC-1].shortDisplay();
         System.out.println();
         System.out.println();
     }

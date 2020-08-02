@@ -19,7 +19,7 @@ public class AccountTest{
 
         System.out.println("Inhalte der Datenbank c: ");
         PersonData c = new PersonData(10, 100);
-        c.loadingSAccounts("Konten.dat");
+        c.loadingSAccounts("SKonten.dat");
         c.loadingCAccounts("CKonten.dat");
         //c.loadingAccounts("Konten.dat");
         c.display();

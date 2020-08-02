@@ -238,7 +238,7 @@ public class Main {
 
                 //pdb.insertStylist("Chanti", "Mueller", "c.mueller@mail.de", 123123, "cut", "wash");
 
-                System.out.println("Geben Sie alle Kundendaten ein. (Vorname, Nachname, E-Mail, Telefonnummer, Service(s)");
+                System.out.println("Geben Sie alle Stylistendaten ein. (Vorname, Nachname, E-Mail, Telefonnummer, Service(s)");
                 String a3 = in.next();
                 String b3 = in.next();
                 String c3 = in.next();
